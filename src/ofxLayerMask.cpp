@@ -52,7 +52,7 @@ void ofxLayerMask::drawLayer(int layerId, bool masked) {
 void ofxLayerMask::drawLayer(int layerId, int x, int y, int _width, int _height, bool masked) {
     if(masked) {
         maskShader.begin();
-        maskShader.setUniformTexture("maskTex", masks.at(layerId).getTextureReference(), 1);
+        maskShader.setUniformTexture("maskTex", masks.at(layerId).getTexture(), 1);
         layers.at(layerId).draw(x, y, validWidth(_width), validHeight(_height));
         maskShader.end();
     } else {
@@ -206,7 +206,7 @@ void ofxLayerMask::initMaskFbo(ofFbo &fbo) {
 }
 
 string ofxLayerMask::shader(string name) {
-    string shaderPath = "../../../../../addons/ofxLayerMask/src/shader/" + name;
+    string shaderPath = shadersDir + "/" + name;
 #ifdef TARGET_OPENGLES
     return shaderPath + "_ES2";
 #else

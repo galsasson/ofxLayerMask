@@ -23,6 +23,7 @@ public:
     void drawLayers(int fromId, int throughId, int x=0, int y=0, int _width=-1, int _height=-1, bool masked=true);
     void drawMask(int maskId, int x=0, int y=0, int _width=-1, int _height=-1);
     void drawOverlay();
+	void setShadersDirectory(const string& dir) { shadersDir = dir; }
 
     int newLayer();
     vector<int> newLayers(int numLayers);
@@ -52,6 +53,7 @@ private:
     int validWidth(int _width);
     int validHeight(int _height);
 
+	string shadersDir = "../../../../../addons/ofxLayerMask/src/shader";
     int width, height;
     ofShader maskShader;
     vector<ofFbo> masks, layers;

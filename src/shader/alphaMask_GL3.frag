@@ -1,7 +1,7 @@
 #version 150
 
-uniform sampler2DRect tex0;
-uniform sampler2DRect maskTex;
+uniform sampler2D tex0;
+uniform sampler2D maskTex;
 in vec2 texCoordVarying;
 out vec4 outputColor;
 
