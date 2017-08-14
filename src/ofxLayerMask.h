@@ -24,6 +24,7 @@ public:
     void drawMask(int maskId, int x=0, int y=0, int _width=-1, int _height=-1);
     void drawOverlay();
 	void setShadersDirectory(const string& dir) { shadersDir = dir; }
+	void setMipmaps(bool enabled) { bMipmapsEnabled = enabled; }
 
     int newLayer();
     vector<int> newLayers(int numLayers);
@@ -69,4 +70,5 @@ private:
     int thumbWidth, thumbHeight, halfThumbHeight, doubleThumbWidth, tripleThumbWidth;
     int textAreaWidth;
     int x, y;
+	bool bMipmapsEnabled=false;
 };

@@ -152,11 +152,17 @@ void ofxLayerMask::end() {
 
 void ofxLayerMask::endLayer() {
     layers.back().end();
+	if (bMipmapsEnabled) {
+		layers.back().getTexture().generateMipmap();
+	}
     endLayerIsolation();
 }
 
 void ofxLayerMask::endLayer(int _id) {
     layers.at(_id).end();
+	if (bMipmapsEnabled) {
+		layers.at(_id).getTexture().generateMipmap();
+	}
     endLayerIsolation();
 }
 
@@ -193,6 +199,10 @@ void ofxLayerMask::initOverlay() {
 
 void ofxLayerMask::initFbo(ofFbo &fbo) {
     fbo.allocate(width, height, GL_RGBA, numSamples);
+	if (bMipmapsEnabled) {
+		fbo.getTexture().generateMipmap();
+		fbo.getTexture().setTextureMinMagFilter(GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR);
+	}
     fbo.begin();
     ofBackground(ofColor(ofColor::black, 0));
     fbo.end();
